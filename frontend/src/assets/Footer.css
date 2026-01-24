@@ -1,0 +1,66 @@
+.app-footer {
+  background-color: var(--youtube-dark-secondary);
+  border-top: 1px solid var(--youtube-border);
+  padding: 24px;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.3s ease;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-icon {
+  color: var(--youtube-red);
+  font-size: 2rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--youtube-gray);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--youtube-light-gray);
+}
+
+.footer-copyright {
+  color: var(--youtube-gray);
+  font-size: 0.9rem;
+}
+
+/* Responsive para footer */
+@media (max-width: 1312px) {
+  .app-footer {
+    margin-left: var(--mini-sidebar-width);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-footer {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

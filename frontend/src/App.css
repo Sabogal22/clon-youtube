@@ -1,0 +1,312 @@
+/* Variables CSS */
+:root {
+  --youtube-red: #ff0000;
+  --youtube-dark: #0f0f0f;
+  --youtube-dark-secondary: #272727;
+  --youtube-dark-tertiary: #3d3d3d;
+  --youtube-gray: #aaaaaa;
+  --youtube-light-gray: #f1f1f1;
+  --youtube-blue: #3ea6ff;
+  --youtube-border: #303030;
+  --navbar-height: 10px;
+  --sidebar-width: 240px;
+  --mini-sidebar-width: 72px;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+  background-color: var(--youtube-dark);
+  color: var(--youtube-light-gray);
+  overflow-x: hidden;
+}
+
+/* Layout principal */
+.app-container {
+  min-height: 100vh;
+}
+
+/* Contenedor principal */
+.main-container {
+  display: flex;
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  padding: 24px;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - var(--navbar-height));
+  background-color: var(--youtube-dark);
+}
+
+/* Responsive para pantallas medianas */
+@media (max-width: 1312px) {
+  .main-content {
+    margin-left: var(--mini-sidebar-width);
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 16px;
+  }
+}
+
+/* Filtros y controles */
+.filters-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filters-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.filters-left::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filters-left::-webkit-scrollbar-track {
+  background: var(--youtube-dark-secondary);
+}
+
+.filters-left::-webkit-scrollbar-thumb {
+  background: var(--youtube-dark-tertiary);
+  border-radius: 2px;
+}
+
+.filter-button {
+  background-color: var(--youtube-dark-secondary);
+  color: var(--youtube-light-gray);
+  border: 1px solid var(--youtube-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-button:hover {
+  background-color: var(--youtube-dark-tertiary);
+}
+
+.filter-button.active {
+  background-color: white;
+  color: var(--youtube-dark);
+  border-color: white;
+}
+
+.filters-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.sort-select {
+  background-color: var(--youtube-dark-secondary);
+  color: var(--youtube-light-gray);
+  border: 1px solid var(--youtube-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Grid de videos */
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 32px 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 1400px) {
+  .videos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .videos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .videos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .videos-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Mensaje cuando no hay videos */
+.no-videos {
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--youtube-gray);
+}
+
+.no-videos-icon {
+  font-size: 4rem;
+  color: var(--youtube-border);
+  margin-bottom: 24px;
+}
+
+.no-videos-title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--youtube-light-gray);
+}
+
+.no-videos-text {
+  font-size: 1rem;
+  max-width: 400px;
+  margin: 0 auto 24px;
+}
+
+/* Loader para carga de videos */
+.videos-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--youtube-border);
+  border-top-color: var(--youtube-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 24px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--youtube-dark-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--youtube-dark-tertiary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--youtube-gray);
+}
+
+/* Utilidades */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mb-3 { margin-bottom: 24px; }
+.mb-4 { margin-bottom: 32px; }
+
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 16px; }
+.mt-3 { margin-top: 24px; }
+.mt-4 { margin-top: 32px; }
+
+.p-1 { padding: 8px; }
+.p-2 { padding: 16px; }
+.p-3 { padding: 24px; }
+.p-4 { padding: 32px; }
+
+/* Transiciones suaves */
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Clases para dispositivos */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* Links limpios */
+.clean-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.clean-link:hover {
+  color: inherit;
+}

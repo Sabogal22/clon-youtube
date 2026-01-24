@@ -1,0 +1,226 @@
+/* Navbar principal */
+.youtube-navbar {
+  background-color: #0f0f0f !important;
+  padding: 0 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo de YouTube */
+.youtube-brand {
+  padding: 18px 14px 18px 16px;
+  margin-right: 0;
+}
+
+.youtube-logo-icon {
+  color: #ff0000;
+  font-size: 1.8rem;
+  margin-right: 2px;
+}
+
+.youtube-brand-text {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+
+.youtube-superscript {
+  color: #aaa;
+  font-size: 0.7rem;
+  margin-left: 2px;
+  font-weight: normal;
+}
+
+/* Botón para abrir el menú lateral */
+.youtube-sidebar-toggler {
+  border: none;
+  background: transparent;
+  padding: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.youtube-sidebar-toggler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.youtube-sidebar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Barra de búsqueda */
+.youtube-search-form {
+  max-width: 640px;
+}
+
+.youtube-search-container {
+  border-radius: 40px 0 0 40px;
+  overflow: hidden;
+  border: 1px solid #303030;
+  border-right: none;
+}
+
+.youtube-search-input {
+  background-color: #121212 !important;
+  border: none !important;
+  color: white !important;
+  padding: 10px 16px;
+}
+
+.youtube-search-input:focus {
+  box-shadow: none !important;
+  border: 1px solid #1c62b9 !important;
+}
+
+.youtube-search-button {
+  background-color: #222222 !important;
+  border: 1px solid #303030 !important;
+  border-left: none !important;
+  border-radius: 0 40px 40px 0;
+  color: #888;
+  padding: 8px 20px;
+  transition: background-color 0.2s;
+}
+
+.youtube-search-button:hover {
+  background-color: #303030 !important;
+  color: white;
+}
+
+/* Botón de micrófono */
+.youtube-mic-button {
+  background-color: #222222;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  margin-left: 8px;
+  transition: background-color 0.2s;
+}
+
+.youtube-mic-button:hover {
+  background-color: #303030;
+}
+
+/* Iconos de navegación */
+.youtube-nav-icon {
+  color: white;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.youtube-nav-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Badge de notificaciones */
+.youtube-notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #cc0000;
+  color: white;
+  font-size: 0.6rem;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Avatar del usuario */
+.youtube-user-avatar {
+  padding: 0;
+  border: none;
+  background: transparent;
+  margin-left: 12px;
+}
+
+.youtube-avatar-initial {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #065fd4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Barra de búsqueda para móviles */
+.youtube-search-mobile {
+  color: white;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.youtube-mobile-search-expanded {
+  padding-bottom: 12px;
+  border-top: 1px solid #303030;
+}
+
+/* Dropdown menu personalizado */
+.dropdown-menu {
+  background-color: #282828;
+  border: 1px solid #404040;
+}
+
+.dropdown-item {
+  color: #f1f1f1;
+  padding: 10px 16px;
+}
+
+.dropdown-item:hover {
+  background-color: #3d3d3d;
+  color: white;
+}
+
+.dropdown-divider {
+  border-color: #404040;
+}
+
+.dropdown-item i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .youtube-brand {
+    padding: 18px 0;
+  }
+  
+  .youtube-search-form {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .youtube-navbar {
+    padding: 0 8px;
+  }
+  
+  .youtube-brand-text {
+    font-size: 1.2rem;
+  }
+}
