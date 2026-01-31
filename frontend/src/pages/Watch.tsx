@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Comment } from "../types/comment";
 import type { VideoUI } from "../types/video";
+import { formatearTiempo } from "../utils/time";
 import "../assets/Watch.css";
 
 function Watch() {
@@ -86,7 +87,9 @@ function Watch() {
                 <span className="views-count">
                   <i className="fas fa-eye"></i> {video.vistas} vistas
                 </span>
-                <span className="upload-date">Hoy</span>
+                <span className="upload-date">
+                  {formatearTiempo(video.created_at)}
+                </span>
               </div>
 
               <div className="action-buttons">

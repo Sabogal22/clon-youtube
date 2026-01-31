@@ -2,7 +2,7 @@ import { Component } from "react";
 import "../assets/VideoCard.css";
 import type { VideoUI } from "../types/video";
 import { Link } from "react-router-dom";
-import {formatearTiempo} from "../utils/time";
+import { formatearTiempo } from "../utils/time";
 
 interface VideoCardProps {
   video: VideoUI;
