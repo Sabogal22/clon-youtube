@@ -8,6 +8,19 @@ interface VideoCardProps {
   video: VideoUI;
 }
 
+function esPopular(vistas: number): boolean {
+  return vistas >= 10000;
+}
+
+function esNuevo(createdAt: string): boolean {
+  const fecha = new Date(createdAt);
+  const ahora = new Date();
+  const diferenciaDias =
+    (ahora.getTime() - fecha.getTime()) / (1000 * 60 * 60 * 24);
+
+  return diferenciaDias <= 3;
+}
+
 class VideoCard extends Component<VideoCardProps> {
   render() {
     const { video } = this.props;
@@ -28,13 +41,14 @@ class VideoCard extends Component<VideoCardProps> {
             <span className="video-duration">{video.duracion}</span>
 
             {/* Badge de nuevo o popular */}
-            {video.esNuevo && (
-              <span className="video-badge video-badge-new">NUEVO</span>
-            )}
-            {video.esPopular && (
+            {esPopular(video.vistas) ? (
               <span className="video-badge video-badge-popular">
                 <i className="fas fa-fire"></i> POPULAR
               </span>
+            ) : (
+              esNuevo(video.created_at) && (
+                <span className="video-badge video-badge-new">NUEVO</span>
+              )
             )}
 
             {/* Overlay de hover */}
