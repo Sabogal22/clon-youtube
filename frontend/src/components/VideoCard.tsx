@@ -2,6 +2,7 @@ import { Component } from "react";
 import "../assets/VideoCard.css";
 import type { VideoUI } from "../types/video";
 import { Link } from "react-router-dom";
+import {formatearTiempo} from "../utils/time";
 
 interface VideoCardProps {
   video: VideoUI;
@@ -93,7 +94,9 @@ class VideoCard extends Component<VideoCardProps> {
             {/* Estadísticas */}
             <div className="video-stats">
               <span className="video-views">{video.vistas} vistas</span>
-              <span className="video-time">{video.tiempoPublicacion}</span>
+              <span className="video-time">
+                {formatearTiempo(video.created_at)}
+              </span>
             </div>
 
             {/* Descripción (solo visible en hover) */}

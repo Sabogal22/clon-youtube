@@ -12,7 +12,7 @@ export interface VideoAPI {
 export interface VideoUI extends VideoAPI {
   canal: string;
   avatarCanal: string;
-  tiempoPublicacion: string;
+  tiempoPublicacion: string; // esto no sirve para el frontend
   duracion: string;
   esNuevo?: boolean;
   esPopular?: boolean;

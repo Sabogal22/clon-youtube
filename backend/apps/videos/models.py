@@ -9,7 +9,7 @@ class Video(models.Model):
   titulo = models.CharField(max_length=255)
   descripcion = models.TextField(blank=True)
   video = models.FileField(upload_to='Videos/')
-  created_at = models.DateField(auto_now_add=True)
+  created_at = models.DateTimeField(auto_now_add=True)
   vistas = models.PositiveIntegerField(default=0)
   portada = models.ImageField(upload_to='Videos/Portadas/')
   estado = models.CharField(
