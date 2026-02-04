@@ -10,10 +10,13 @@ function Watch() {
   const { id } = useParams<{ id: string }>();
   const [video, setVideo] = useState<VideoUI | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [commentText, setCommentText] = useState("");
+  const [sendingComment, setSendingComment] = useState(false);
   const [loading, setLoading] = useState(true);
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
 
+  /* Para cargar el video */
   useEffect(() => {
     if (!id) return;
 
@@ -30,6 +33,7 @@ function Watch() {
       });
   }, [id]);
 
+  /* Para ver los comentarios del video */
   useEffect(() => {
     if (!id) return;
     const fetchComments = async () => {
@@ -53,6 +57,30 @@ function Watch() {
       .get(`http://127.0.0.1:8000/api/videos/${id}/likes/`)
       .then((res) => setLikes(res.data.likes));
   }, [id]);
+
+  /* Para poder crear un comentario */
+  const handleCreateComment = async () => {
+    if (!commentText.trim() || !id) return;
+
+    try {
+      setSendingComment(true);
+
+      const res = await axios.post<Comment>(
+        `http://127.0.0.1:8000/api/videos/${id}/comments/create/`,
+        {
+          contenido: commentText,
+        },
+      );
+
+      // Agregar el comentario nuevo arriba de la lista
+      setComments((prev) => [res.data, ...prev]);
+      setCommentText("");
+    } catch (error) {
+      console.log("Error creando comentario", error);
+    } finally {
+      setSendingComment(false);
+    }
+  };
 
   const handleLike = async () => {
     const res = await axios.post(
@@ -126,6 +154,7 @@ function Watch() {
             </div>
           </div>
 
+          {/* Seccion de los comentarios */}
           <section className="comments-section">
             <div className="comments-header">
               <h3>
@@ -135,12 +164,30 @@ function Watch() {
             </div>
 
             <div className="comment-input-area">
-              <div className="user-avatar-small">U</div>
+              <div className="user-avatar-small">N</div>
+              {/* Aca deberia agregar un comentario sin ningun problema */}
               <input
                 type="text"
                 placeholder="Añade un comentario público..."
                 className="comment-input"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && commentText.trim()) {
+                    handleCreateComment();
+                  }
+                }}
+                disabled={sendingComment}
               />
+              <button
+                className={`comment-submit-btn ${
+                  commentText.trim() ? "active" : "disabled"
+                }`}
+                onClick={handleCreateComment}
+                disabled={!commentText.trim() || sendingComment}
+              >
+                Comentar
+              </button>
             </div>
 
             <div className="comments-list">
@@ -157,7 +204,7 @@ function Watch() {
 
               {comments.map((comment) => (
                 <div className="comment-card" key={comment.id}>
-                  <div className="comment-avatar">U</div>
+                  <div className="comment-avatar">N</div>
                   <div className="comment-content">
                     <div className="comment-header">
                       <span className="comment-author">Usuario</span>
